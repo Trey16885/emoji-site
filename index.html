@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Emoji Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="top-bar">
+    <div class="money-display" id="money-container">Balance: $<span id="money-display">500</span></div>
+    <div class="top-buttons">
+        <button class="code-btn" onclick="openCodeBook()">Code Book <span class="notif-dot" id="notif-dot">!</span></button>
+        <button class="promo-btn" onclick="openPromoPanel()">Promo Codes</button>
+    </div>
+    <div class="limit-display" id="limit-container">
+        EMOJIS & WORDS: <span id="pet-count">0</span> / <span id="pet-max">3</span> 
+        <br><small id="multiplier-display" style="color:var(--success); display:none;">(x2 Income!)</small>
+    </div>
+</div>
+
+<div id="world-container"></div>
+
+<div id="bottom-menu">
+    <button class="buy-enc" onclick="buyEnclosure()">+ Enclosure ($500)</button>
+    
+    <div class="custom-container">
+        <input type="text" id="custom-emoji" placeholder="Emoji">
+        <button id="btn-customEmoji" onclick="buyCustomEmoji()" style="background:#ffc107; color:black; height:38px;">Buy Emoji ($1k)</button>
+    </div>
+
+    <div class="custom-container">
+        <input type="text" id="custom-word" placeholder="Word" maxlength="6">
+        <button id="btn-customWord" onclick="buyCustomWord()" style="background:var(--word); color:white; height:38px;">Buy Word ($1k)</button>
+    </div>
+
+    <button id="btn-gemini" class="buy-gemini" onclick="buyPet('gemini')">✨ Gemini ($500)</button>
+    <button id="btn-poop" onclick="buyPet('💩')">💩 Poop ($0)</button>
+    <button id="btn-apple" onclick="buyPet('apple')">🍎 Apple ($150)</button>
+    <button id="btn-distorted" onclick="buyPet('distorted')">🌀 Distorted ($300)</button>
+    
+    <button class="reset-btn" onclick="clearSave()">Reset Save</button>
+    <button onclick="openAdmin()" style="opacity: 0.2; background: none; color: gray;">Admin</button>
+</div>
+
+<!-- Promo Codes Panel -->
+<div id="promo-panel" class="modal">
+    <h2 style="margin-top:0">Redeem Promo Code</h2>
+    <input type="text" id="promo-input" placeholder="Enter Code Here">
+    <button onclick="redeemCode()" style="background:#28a745; color:white;">Redeem</button>
+    <button onclick="closeModal('promo-panel')" style="background:#dc3545; color:white;">Close</button>
+    <div id="promo-msg" class="modal-msg"></div>
+</div>
+
+<!-- Code Book Panel -->
+<div id="code-book-panel" class="modal">
+    <h2 style="margin-top:0">📖 The Code Book</h2>
+    <div id="book-message" class="book-text">The pages are empty right now... Check back later!</div>
+    <button onclick="closeModal('code-book-panel')" style="background:#dc3545; color:white;">Close Book</button>
+</div>
+
+<!-- Admin Panel -->
+<div id="admin-panel" class="modal">
+    <h2 style="margin-top:0">Root Access</h2>
+    
+    <div id="admin-login" style="display:flex; flex-direction:column; gap:10px;">
+        <input type="password" id="admin-pass" placeholder="Enter Password">
+        <button onclick="checkAdmin()" style="background:var(--accent); color:white; width:100%;">ACCESS</button>
+        <button onclick="closeModal('admin-panel')" style="background:#6c757d; color:white; width:100%;">Cancel</button>
+    </div>
+
+    <div id="admin-tools" style="display:none; margin-top:10px; flex-direction:column; gap:10px;">
+        <p style="color:var(--success); font-weight:bold; margin:0;">Access Granted</p>
+        <button onclick="state.money += 50000; updateUI();" style="background:#28a745; color:white; width:100%;">Add $50k</button>
+        <button onclick="closeModal('admin-panel')" style="background:#dc3545; color:white; width:100%;">Close Panel</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+  
