@@ -1,3 +1,3 @@
 # emoji-site
-(Play)[https://trey16885.github.io/emoji-site]
-Have Fun?
+[Play](https://trey16885.github.io/emoji-site/)
+Have Fun!
